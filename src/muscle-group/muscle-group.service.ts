@@ -2,14 +2,23 @@ import { Injectable } from '@nestjs/common';
 import { CreateMuscleGroupDto } from './dto/create-muscle-group.dto';
 import { UpdateMuscleGroupDto } from './dto/update-muscle-group.dto';
 
+import { Repository } from 'typeorm';
+import { MuscleGroup } from './entities/muscle-group.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+
 @Injectable()
 export class MuscleGroupService {
+  constructor(
+    @InjectRepository(MuscleGroup)
+    private readonly muscleGroupsRepository: Repository<MuscleGroup>,
+  ) {}
+
   create(createMuscleGroupDto: CreateMuscleGroupDto) {
-    return 'This action adds a new muscleGroup';
+    return this.muscleGroupsRepository.save(createMuscleGroupDto);
   }
 
   findAll() {
-    return `This action returns all muscleGroup`;
+    return this.muscleGroupsRepository.find();
   }
 
   findOne(id: number) {
