@@ -26,7 +26,7 @@ export class MuscleGroupService {
   }
 
   update(id: number, updateMuscleGroupDto: UpdateMuscleGroupDto) {
-    return `This action updates a #${id} muscleGroup`;
+    return `This action updates a #${id} - ${updateMuscleGroupDto} muscleGroup`;
   }
 
   remove(id: number) {

@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { MuscleGroupService } from './muscle-group.service';
 import { CreateMuscleGroupDto } from './dto/create-muscle-group.dto';
 import { UpdateMuscleGroupDto } from './dto/update-muscle-group.dto';
@@ -23,7 +31,10 @@ export class MuscleGroupController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateMuscleGroupDto: UpdateMuscleGroupDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateMuscleGroupDto: UpdateMuscleGroupDto,
+  ) {
     return this.muscleGroupService.update(+id, updateMuscleGroupDto);
   }
 
